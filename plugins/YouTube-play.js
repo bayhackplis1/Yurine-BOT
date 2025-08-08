@@ -1,0 +1,316 @@
+import _0x2b0951 from 'node-fetch';
+import _0x134b8f from 'axios';
+import _0x304ee8 from 'yt-search';
+import {
+    youtubedl,
+    youtubedlv2
+} from '@bochilteam/scraper';
+import _0x435750 from 'ytdl-core';
+import {
+    bestFormat,
+    getUrlDl
+} from '../lib/y2dl.js';
+import _0x49e7f9 from '../lib/ytdll.js';
+import _0x22e9c2 from 'fs';
+import { HttpsProxyAgent } from 'https-proxy-agent';
+let limit1 = 0x64,
+    limit2 = 0x190,
+    limit_a1 = 0x32,
+    limit_a2 = 0x190;
+const freeProxies = [
+    'http://103.152.112.120:80',
+    'http://8.208.90.194:8080',
+    'http://47.74.152.29:8888',
+    'http://154.236.168.179:1981',
+    'http://103.149.162.194:80',
+    'http://185.174.159.10:41080',
+    'http://103.111.53.102:63238',
+    'http://165.154.92.146:8888',
+    'http://190.61.88.147:8080',
+    'http://103.155.54.185:83'
+];
+const userAgents = [
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/119.0.0.0 Safari/537.36 Edg/119.0.0.0',
+    'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:120.0) Gecko/20100101 Firefox/120.0',
+    'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.1 Safari/605.1.15',
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36',
+    'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:120.0) Gecko/20100101 Firefox/120.0'
+];
+
+const getRandomProxy = () => freeProxies[Math.floor(Math.random() * freeProxies.length)];
+const getRandomUserAgent = () => userAgents[Math.floor(Math.random() * userAgents.length)];
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+const handler = async (_0x384fe2, {
+    conn: _0x26f3cc,
+    command: _0x3657f6,
+    args: _0x363ab1,
+    text: _0x353b4f,
+    usedPrefix: _0x5ae8cf
+}) => {
+    let _0x3945e7 = {
+        'key': {
+            'participants': '0@s.whatsapp.net',
+            'remoteJid': 'status@broadcast',
+            'fromMe': ![],
+            'id': 'Halo'
+        },
+        'message': {
+            'contactMessage': {
+                'vcard': 'BEGIN:VCARD\x0aVERSION:3.0\x0aN:Sy;Bot;;;\x0aFN:y\x0aitem1.TEL;waid=' + _0x384fe2['sender']['split']('@')[0x0] + ':' + _0x384fe2['sender']['split']('@')[0x0] + '\x0aitem1.X-ABLabel:Ponsel\x0aEND:VCARD'
+            }
+        },
+        'participant': '0@s.whatsapp.net'
+    };
+    if (!_0x353b4f) return _0x26f3cc['reply'](_0x384fe2['chat'], '[❗]\x20Ponga\x20el\x20nombre\x20de\x20su\x20video\x20o\x20musica\x20\x20\x0a\x0a\x20ejemplo:\x20\x0a\x20*' + (_0x5ae8cf + _0x3657f6) + '\x20GABI\x20BOT\x20MD  ', _0x3945e7, _0x384fe2);
+    try {
+        _0x26f3cc['reply'](_0x384fe2['chat'], '' + wait, _0x3945e7, _0x384fe2);
+        
+        await delay(Math.floor(Math.random() * 2000) + 500);
+        
+        const _0xb1a3db = await search(_0x363ab1['join']('\x20'));
+        let _0x550d3c = '';
+        if (_0x3657f6 === 'play' || _0x3657f6 == 'audio' || _0x3657f6 == 'play3' || _0x3657f6 == 'playdoc' || _0x3657f6 == 'musica' || _0x3657f6 == 'sonido') _0x550d3c = 'audio\x20🔊';
+        else(_0x3657f6 === 'play2' || _0x3657f6 == 'video' || _0x3657f6 == 'play4' || _0x3657f6 == 'playdoc2' || _0x3657f6 == 'peliculas' || _0x3657f6 == 'pelis') && (_0x550d3c = 'video\x20🎥');
+        const _0x3ccf34 = (ig100 + '\x20' + hadesyo + '\x20' + ig1000 + '\x0a│✨│➟Autor:\x20' + _0xb1a3db[0x0]['author']['name'] + '\x0a│📝│➟Publicado:\x20' + _0xb1a3db[0x0]['ago'] + '\x0a│⏱️│➟Duración:\x20' + secondString(_0xb1a3db[0x0]['duration']['seconds']) + '\x0a│🧿╰➟Visitas:\x20' + ('' + MilesNumber(_0xb1a3db[0x0]['views'])) + '\x20\x0a' + ig5)['trim']();
+        await _0x26f3cc['sendMessage'](_0x384fe2['chat'], {
+            'text': _0x3ccf34,
+            'contextInfo': {
+                'externalAdReply': {
+                    'title': _0xb1a3db[0x0]['title'],
+                    'body': packname,
+                    'thumbnailUrl': _0xb1a3db[0x0]['thumbnail'],
+                    'mediaType': 0x1,
+                    'showAdAttribution': !![],
+                    'renderLargerThumbnail': !![]
+                }
+            }
+        }, {
+            'quoted': _0x384fe2
+        });
+        await delay(Math.floor(Math.random() * 3000) + 1000);
+        if (_0x3657f6 == 'play' || _0x3657f6 == 'audio' || _0x3657f6 == 'musica' || _0x3657f6 == 'sonido') {
+            const _0xc80da6 = '128kbps',
+                _0x2aaf15 = _0xb1a3db[0x0]['url'],
+                _0x477cf2 = await youtubedl(_0x2aaf15)['catch'](async _0x11c7ee => await youtubedlv2(_0x2aaf15)),
+                _0x40bb42 = await _0x477cf2['audio'][_0xc80da6]['download'](),
+                _0xf55cfb = await _0x477cf2['title'],
+                _0x567abd = await _0x477cf2?.['size'],
+                _0x1e58ec = _0x567abd?.['replace']('MB', '')?.['replace']('GB', '')?.['replace']('KB', ''),
+                _0x38e222 = await getBufferWithProxy(_0x40bb42),
+                _0x1b4af8 = _0x38e222['byteLength'],
+                _0x5e012d = _0x1b4af8 / 0x400,
+                _0x4cfbbf = _0x5e012d / 0x400,
+                _0x4cdf07 = _0x4cfbbf['toFixed'](0x2);
+            if (_0x4cdf07 >= limit_a2) return;
+            if (_0x4cdf07 >= limit_a1 && _0x4cdf07 <= limit_a2) {
+                await _0x26f3cc['sendMessage'](_0x384fe2['chat'], {
+                    'document': _0x38e222,
+                    'mimetype': 'audio/mpeg',
+                    'fileName': _0xf55cfb + '.mp3'
+                }, {
+                    'quoted': _0x384fe2
+                });
+                return;
+            } else {
+                await _0x26f3cc['sendMessage'](_0x384fe2['chat'], {
+                    'audio': _0x38e222,
+                    'mimetype': 'audio/mpeg',
+                    'fileName': _0xf55cfb + '.mp3'
+                }, {
+                    'quoted': _0x384fe2
+                });
+                return;
+            }
+        }
+        if (_0x3657f6 == 'play3' || _0x3657f6 == 'playdoc') {
+            const _0x4268b6 = '128kbps',
+                _0x2c2249 = _0xb1a3db[0x0]['url'],
+                _0x4b88fd = await youtubedl(_0x2c2249)['catch'](async _0x4c1a52 => await youtubedlv2(_0x2c2249)),
+                _0x5cae0f = await _0x4b88fd['audio'][_0x4268b6]['download'](),
+                _0x30e06e = await _0x4b88fd['title'],
+                _0x5aaf0c = await _0x4b88fd?.['size'],
+                _0x17701a = _0x5aaf0c?.['replace']('MB', '')?.['replace']('GB', '')?.['replace']('KB', ''),
+                _0x73f1 = await getBufferWithProxy(_0x5cae0f),
+                _0x5a827a = _0x73f1['byteLength'],
+                _0x5d0227 = _0x5a827a / 0x400,
+                _0x498650 = _0x5d0227 / 0x400,
+                _0x490a30 = _0x498650['toFixed'](0x2);
+            if (_0x490a30 >= limit_a2) return;
+            if (_0x490a30 >= limit_a1 && _0x490a30 <= limit_a2) {
+                await _0x26f3cc['sendMessage'](_0x384fe2['chat'], {
+                    'document': _0x73f1,
+                    'mimetype': 'audio/mpeg',
+                    'fileName': _0x30e06e + '.mp3'
+                }, {
+                    'quoted': _0x384fe2
+                });
+                return;
+            } else {
+                await _0x26f3cc['sendMessage'](_0x384fe2['chat'], {
+                    'document': _0x73f1,
+                    'mimetype': 'audio/mpeg',
+                    'fileName': _0x30e06e + '.mp3'
+                }, {
+                    'quoted': _0x384fe2
+                });
+                return;
+            }
+        }
+        if (_0x3657f6 == 'play2' || _0x3657f6 == 'video') {
+            const _0x137b6f = '360',
+                _0x19e2b3 = _0x137b6f + 'p',
+                _0x385599 = _0xb1a3db[0x0]['url'],
+                _0x28d800 = await youtubedl(_0x385599)['catch'](async _0x16197f => await youtubedlv2(_0x385599)),
+                _0x1712b1 = await _0x28d800['video'][_0x19e2b3]['download'](),
+                _0x2d0702 = await _0x28d800['title'],
+                _0x21ff8f = await _0x28d800?.['size'],
+                _0x1f3417 = _0x21ff8f?.['replace']('MB', '')?.['replace']('GB', '')?.['replace']('KB', ''),
+                _0x16f564 = await getBufferWithProxy(_0x1712b1),
+                _0x428b50 = _0x16f564['byteLength'],
+                _0x3d3f99 = _0x428b50 / 0x400,
+                _0xf58b47 = _0x3d3f99 / 0x400,
+                _0x2cdbfd = _0xf58b47['toFixed'](0x2);
+            if (_0x2cdbfd >= limit2) return;
+            if (_0x2cdbfd >= limit1 && _0x2cdbfd <= limit2) {
+                await _0x26f3cc['sendMessage'](_0x384fe2['chat'], {
+                    'document': _0x16f564,
+                    'mimetype': 'video/mp4',
+                    'fileName': _0x2d0702 + '.mp4'
+                }, {
+                    'quoted': _0x384fe2
+                });
+                return;
+            } else {
+                await _0x26f3cc['sendMessage'](_0x384fe2['chat'], {
+                    'video': _0x16f564,
+                    'mimetype': 'video/mp4',
+                    'fileName': _0x2d0702 + '.mp4'
+                }, {
+                    'quoted': _0x384fe2
+                });
+                return;
+            }
+        }
+        if (_0x3657f6 == 'play4' || _0x3657f6 == 'playdoc2' || _0x3657f6 == 'peliculas' || _0x3657f6 == 'pelis') {
+            const _0x5ac799 = '360',
+                _0x279dda = _0x5ac799 + 'p',
+                _0x15614a = _0xb1a3db[0x0]['url'],
+                _0x5ee5e2 = await youtubedl(_0x15614a)['catch'](async _0x3034bf => await youtubedlv2(_0x15614a)),
+                _0x100f06 = await _0x5ee5e2['video'][_0x279dda]['download'](),
+                _0x5bf145 = await _0x5ee5e2['title'],
+                _0x3d482e = await _0x5ee5e2?.['size'],
+                _0x21e7a5 = _0x3d482e?.['replace']('MB', '')?.['replace']('GB', '')?.['replace']('KB', ''),
+                _0x342804 = await getBufferWithProxy(_0x100f06),
+                _0x366709 = _0x342804['byteLength'],
+                _0x11739e = _0x366709 / 0x400,
+                _0x4f4bea = _0x11739e / 0x400,
+                _0x2c7a44 = _0x4f4bea['toFixed'](0x2);
+            if (_0x2c7a44 >= limit2) return;
+            if (_0x2c7a44 >= limit1 && _0x2c7a44 <= limit2) {
+                await _0x26f3cc['sendMessage'](_0x384fe2['chat'], {
+                    'document': _0x342804,
+                    'mimetype': 'video/mp4',
+                    'fileName': _0x5bf145 + '.mp4'
+                }, {
+                    'quoted': _0x384fe2
+                });
+                return;
+            } else {
+                await _0x26f3cc['sendMessage'](_0x384fe2['chat'], {
+                    'document': _0x342804,
+                    'mimetype': 'video/mp4',
+                    'fileName': _0x5bf145 + '.mp4'
+                }, {
+                    'quoted': _0x384fe2
+                });
+                return;
+            }
+        }
+    } catch (_0x35656f) {
+        console['log'](_0x35656f);
+        throw '*❌ʟᴏ\x20sᴇɴᴛɪᴍᴏs\x20sᴇ\x20ʜᴀ\x20ɢᴇɴᴇʀᴀᴅᴏ\x20ᴜɴ\x20ᴇʀʀᴏʀ\x20ᴠᴜᴇʟᴠᴇ\x20ɪɴᴛᴇɴᴛᴀʀ❌*';
+    }
+};
+handler['help'] = ['play', 'play2']['map'](_0xe9b27 => _0xe9b27 + '\x20<\x20busqueda\x20>'), handler['help'] = ['pla3', 'play4']['map'](_0x12836a => _0x12836a + '\x20<\x20busqueda\x20>'), handler['tags'] = ['downloader'], handler['command'] = /^(play|play2|play3|play4|audio|video|playdoc2|playdoc|musica|sonido|peliculas|pelis)$/i;
+export default handler;
+async function search(_0x599d55, _0x3e243d = {}) {
+    const _0x379bc5 = await _0x304ee8['search']({
+        'query': _0x599d55,
+        'hl': 'es',
+        'gl': 'ES',
+        ..._0x3e243d
+    });
+    return _0x379bc5['videos'];
+}
+function MilesNumber(_0x21f755) {
+    const _0xae6c02 = /(\d)(?=(\d{3})+(?!\d))/g,
+        _0x374ba1 = '$1.',
+        _0x6924c9 = _0x21f755['toString']()['split']('.');
+    return _0x6924c9[0x0] = _0x6924c9[0x0]['replace'](_0xae6c02, _0x374ba1), _0x6924c9[0x1] ? _0x6924c9['join']('.') : _0x6924c9[0x0];
+}
+function secondString(_0x469b7e) {
+    _0x469b7e = Number(_0x469b7e);
+    const _0x418f60 = Math['floor'](_0x469b7e / (0xe10 * 0x18)),
+        _0x32cef5 = Math['floor'](_0x469b7e % (0xe10 * 0x18) / 0xe10),
+        _0x9e2300 = Math['floor'](_0x469b7e % 0xe10 / 0x3c),
+        _0xa78f6b = Math['floor'](_0x469b7e % 0x3c),
+        _0x21ca50 = _0x418f60 > 0x0 ? _0x418f60 + (_0x418f60 == 0x1 ? '\x20día,\x20' : '\x20días,\x20') : '',
+        _0x4ff59b = _0x32cef5 > 0x0 ? _0x32cef5 + (_0x32cef5 == 0x1 ? '\x20hora,\x20' : '\x20horas,\x20') : '',
+        _0x1b7cb3 = _0x9e2300 > 0x0 ? _0x9e2300 + (_0x9e2300 == 0x1 ? '\x20minuto,\x20' : '\x20minutos,\x20') : '',
+        _0x3eec45 = _0xa78f6b > 0x0 ? _0xa78f6b + (_0xa78f6b == 0x1 ? '\x20segundo' : '\x20segundos') : '';
+    return _0x21ca50 + _0x4ff59b + _0x1b7cb3 + _0x3eec45;
+}
+function bytesToSize(_0x4cd47c) {
+    return new Promise((_0x46e943, _0x203177) => {
+        const _0x36dc26 = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+        if (_0x4cd47c === 0x0) return 'n/a';
+        const _0x356657 = parseInt(Math['floor'](Math['log'](_0x4cd47c) / Math['log'](0x400)), 0xa);
+        if (_0x356657 === 0x0) _0x46e943(_0x4cd47c + '\x20' + _0x36dc26[_0x356657]);
+        _0x46e943((_0x4cd47c / 0x400 ** _0x356657)['toFixed'](0x1) + '\x20' + _0x36dc26[_0x356657]);
+    });
+}
+const getBufferWithProxy = async (_0x31aac8, _0x47e07c = {}) => {
+    const proxy = getRandomProxy();
+    const userAgent = getRandomUserAgent();
+    const httpsAgent = new HttpsProxyAgent(proxy);
+    
+    await delay(Math.floor(Math.random() * 1500) + 200);
+    
+    const _0x5cef34 = await _0x134b8f({
+        'method': 'get',
+        'url': _0x31aac8,
+        'headers': {
+            'User-Agent': userAgent,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'es-ES,es;q=0.8,en;q=0.5,en-US;q=0.3',
+            'Accept-Encoding': 'gzip, deflate',
+            'DNT': '1',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1',
+            'Cache-Control': 'no-cache',
+            'Pragma': 'no-cache'
+        },
+        ..._0x47e07c,
+        'httpsAgent': httpsAgent,
+        'timeout': 30000,
+        'responseType': 'arraybuffer'
+    });
+    return _0x5cef34['data'];
+};
+const getBuffer = async (_0x31aac8, _0x47e07c) => {
+    _0x47e07c ? _0x47e07c : {};
+    const _0x5cef34 = await _0x134b8f({
+        'method': 'get',
+        'url': _0x31aac8,
+        'headers': {
+            'DNT': 0x1,
+            'Upgrade-Insecure-Request': 0x1
+        },
+        ..._0x47e07c,
+        'responseType': 'arraybuffer'
+    });
+    return _0x5cef34['data'];
+};
